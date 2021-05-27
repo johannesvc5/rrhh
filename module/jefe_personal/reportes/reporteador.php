@@ -106,8 +106,8 @@
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="militar" name="militar">
                                         <option selected>Servicio Militar:</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
+                                        <option value="si">SI</option>
+                                        <option value="no">NO</option>
                                     </select>
                                     <div class="input-group-append">
                                         <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
@@ -119,15 +119,15 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Discapacidad:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLAB.php" method="post" enctype="multipart/form-data">
+                            <form action="reportDisc.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" id="condLab" name="condLab">
+                                    <select class="form-control" id="discap" name="discap">
                                         <option selected>Discapacidad:</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
+                                        <option value="si">SI</option>
+                                        <option value="no">NO</option>
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -136,15 +136,15 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Condición Familiar:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLAB.php" method="post" enctype="multipart/form-data">
+                            <form action="reportFam.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" id="condLab" name="condLab">
+                                    <select class="form-control" id="fam" name="fam">
                                         <option selected>Condición Familiar:</option>
-                                        <option value="Madre">Madre</option>
-                                        <option value="Padre">Padre</option>
+                                        <option value="F">Madre</option>
+                                        <option value="M">Padre</option>
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -153,16 +153,16 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Etapa de Vida:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLAB.php" method="post" enctype="multipart/form-data">
+                            <form action="reportEtapa.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" id="condLab" name="condLab">
+                                    <select class="form-control" id="etapa" name="etapa">
                                         <option selected>Etapa de Vida:</option>
                                         <option value="Juventud">Juventud - 18 años a 26 años</option>
                                         <option value="Adultez">Adultez - 27 años a 59 años</option>
                                         <option value="Vejez">Vejez - 60 años a más</option>
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -178,16 +178,26 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Condición Laboral:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLAB.php" method="post" enctype="multipart/form-data">
+                            <form action="reportRL.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="condLab" name="condLab">
                                         <option selected>Seleccione el Régimen Laboral:</option>
-                                        <option value="CAS - DL. 1057">CAS - DL. 1057</option>
-                                        <option value="DL. 276">DL. 276</option>
-                                        <option value="DL. 728">DL. 728</option>
+                                        <?php
+                                            include('../../../conexion.php');
+                                            $select2="SELECT condlaboral.idCondLaboral, condlaboral.condLaboral FROM condlaboral";
+                                            $result2=$db->query($select2);
+                                            $option='';
+                                            if($result2->num_rows > 0){
+                                                while($fila2 = $result2->fetch_assoc())
+                                                {
+                                                    $option.='<option value="'.$fila2['idCondLaboral'].'">'.utf8_encode($fila2['condLaboral']).'</option>';
+                                                }
+                                            }
+                                            echo $option;
+                                        ?>
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -196,7 +206,7 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Dependencia:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLABDEP.php" method="post" enctype="multipart/form-data">
+                            <form action="reportDEP.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
                                     <select class="form-control" id="dependencia" name="dependencia" onchange="myFunction(value);">
                                         <option selected>Seleccione la Dependencia:</option>
@@ -217,7 +227,7 @@
 
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -226,11 +236,11 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Cargo:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLAB.php" method="post" enctype="multipart/form-data">
+                            <form action="reportCargo.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="Cargo" placeholder="Ingrese Cargo">
+                                    <input type="text" class="form-control" name="cargo" placeholder="Ingrese Cargo">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -240,13 +250,23 @@
                 <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 30px; margin-top: 10px; color: #353535; font-weight: 650"><u>Reportes Laborales (Especificos)</u></p>
                 <div class="row justify-content-around" style="margin-top: 10px">
                     <div class="col-10">
-                        <form action="reqLABESP.php" method="post" enctype="multipart/form-data">
+                        <form action="reportLABESP.php" method="post" enctype="multipart/form-data">
                             <div class="input-group mb-3">
                                 <select class="form-control" id="condLab" name="condLab">
                                     <option selected>Seleccione el Régimen Laboral:</option>
-                                    <option value="CAS - DL. 1057">CAS - DL. 1057</option>
-                                    <option value="DL. 276">DL. 276</option>
-                                    <option value="DL. 728">DL. 728</option>
+                                    <?php
+                                        include('../../../conexion.php');
+                                        $select2="SELECT condlaboral.idCondLaboral, condlaboral.condLaboral FROM condlaboral";
+                                        $result2=$db->query($select2);
+                                        $option='';
+                                        if($result2->num_rows > 0){
+                                            while($fila2 = $result2->fetch_assoc())
+                                            {
+                                                $option.='<option value="'.$fila2['idCondLaboral'].'">'.utf8_encode($fila2['condLaboral']).'</option>';
+                                            }
+                                        }
+                                        echo $option;
+                                    ?>
                                 </select>
                                 <select class="form-control" id="dependencia" name="dependencia" onchange="myFunction(value);">
                                     <option selected>Seleccione la Dependencia:</option>
@@ -267,7 +287,7 @@
 
                                 </select>
                                 <div class="input-group-append">
-                                    <button class="btn btn-success" type="button" id="button-addon2">Buscar</button>
+                                    <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                 </div>
                             </div>
                         </form>
@@ -282,18 +302,23 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Grado Académico:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqPROF.php" method="post" enctype="multipart/form-data">
+                            <form action="reportGRADO.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
-                                    <select class="form-control" id="condLab" name="condLab">
+                                    <select class="form-control" id="grado" name="grado">
                                         <option selected>Seleccione su Grado Académico:</option>
-                                        <option value="secundaria">Secundaria</option>
-                                        <option value="superior técnico">Superior Técnico</option>
-                                        <option value="universitario">Superior Universitario</option>
-                                        <option value="maestria">Maestría</option>
-                                        <option value="doctorado">Doctorado</option>
+                                        <option value="Secundaria">Secundaria</option>
+                                        <option value="Superior Técnico - Egresado">Superior Técnico - Egresado</option>
+                                        <option value="Superior Técnico - Titulado">Superior Técnico - Titulado</option>
+                                        <option value="Superior Universitario - Egresado">Superior Universitario - Egresado</option>
+                                        <option value="Superior Universitario - Bachiller">Superior Universitario - Bachiller</option>
+                                        <option value="Superior Universitario - Titulado">Superior Universitario - Titulado</option>
+                                        <option value="Maestria - Egresado">Maestría - Egresado</option>
+                                        <option value="Maestria - Titulado">Maestría - Titulado</option>
+                                        <option value="Doctorado- Egresado">Doctorado- Egresado</option>
+                                        <option value="Doctorado - Titulado">Doctorado - Titulado</option>
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -302,11 +327,11 @@
                     <div class="col-6">
                         <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 22px; margin-top: 10px; color: #353535; font-weight: 650">Profesión:</p>
                         <div class="form-group col-md-12">
-                            <form action="reqLABDEP.php" method="post" enctype="multipart/form-data">
+                            <form action="reportPROF.php" method="post" enctype="multipart/form-data">
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" name="Profesión" placeholder="Ingrese Profesión">
+                                    <input type="text" class="form-control" name="profesion" placeholder="Ingrese Profesión">
                                     <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button" id="button-addon2">Buscar</button>
+                                        <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                     </div>
                                 </div>
                             </form>
@@ -316,19 +341,24 @@
                 <p class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center" style="font-size: 30px; margin-top: 10px; color: #353535; font-weight: 650"><u>Reportes Profesionales (Especificos)</u></p>
                 <div class="row justify-content-around" style="margin-top: 10px">
                     <div class="col-10">
-                        <form action="reqLABESP.php" method="post" enctype="multipart/form-data">
+                        <form action="reportPROFESP.php" method="post" enctype="multipart/form-data">
                             <div class="input-group mb-3">
-                                <select class="form-control" id="condLab" name="condLab">
+                                <select class="form-control" id="grado" name="grado">
                                     <option selected>Seleccione su Grado Académico:</option>
-                                    <option value="secundaria">Secundaria</option>
-                                    <option value="superior técnico">Superior Técnico</option>
-                                    <option value="universitario">Superior Universitario</option>
-                                    <option value="maestria">Maestría</option>
-                                    <option value="doctorado">Doctorado</option>
+                                    <option value="Secundaria">Secundaria</option>
+                                    <option value="Superior Técnico - Egresado">Superior Técnico - Egresado</option>
+                                    <option value="Superior Técnico - Titulado">Superior Técnico - Titulado</option>
+                                    <option value="Superior Universitario - Egresado">Superior Universitario - Egresado</option>
+                                    <option value="Superior Universitario - Bachiller">Superior Universitario - Bachiller</option>
+                                    <option value="Superior Universitario - Titulado">Superior Universitario - Titulado</option>
+                                    <option value="Maestria - Egresado">Maestría - Egresado</option>
+                                    <option value="Maestria - Titulado">Maestría - Titulado</option>
+                                    <option value="Doctorado- Egresado">Doctorado- Egresado</option>
+                                    <option value="Doctorado - Titulado">Doctorado - Titulado</option>
                                 </select>
-                                <input type="text" class="form-control" name="Profesión" placeholder="Ingrese Profesión">
+                                <input type="text" class="form-control" name="profesion" placeholder="Ingrese Profesión">
                                 <div class="input-group-append">
-                                    <button class="btn btn-success" type="button" id="button-addon2">Buscar</button>
+                                    <button type="submit" class="btn btn-primary float-right mr-sm-2">Buscar</button>
                                 </div>
                             </div>
                         </form>

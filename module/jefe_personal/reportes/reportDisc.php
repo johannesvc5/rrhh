@@ -1,6 +1,6 @@
 <?php
 
-$militar = $_POST['militar'];
+$discap = $_POST['discap'];
 
 include '../../resources/plantilla.php';
 require '../../../conexion.php';
@@ -15,7 +15,7 @@ personal.fNacimiento,
 infpersonal.correo, 
 infpersonal.telefono, 
 inflaboral.cargo, 
-infadicional.servMilitar
+infadicional.discapacidad
 FROM
 personal
 INNER JOIN
@@ -31,7 +31,7 @@ infadicional
 ON 
     personal.idpersonal = infadicional.idPersonal
 WHERE
-    infadicional.servMilitar = '$militar'";
+    infadicional.discapacidad = '$discap'";
 
 $resultado = $db->query($select);
 
@@ -53,7 +53,7 @@ $pdf->Cell(20,6,'F.Nacim.',1,0,'C',1,'0');
 $pdf->Cell(30,6,'Correo',1,0,'C',1,'0');
 $pdf->Cell(20,6,'Celular',1,0,'C',1,'0');
 $pdf->Cell(49,6,'Cargo',1,0,'C',1,'0');
-$pdf->Cell(12,6,'Serv.Mil.',1,1,'C',1,'0');
+$pdf->Cell(12,6,'Discap.',1,1,'C',1,'0');
 
 $pdf->SetFont('Arial','',6);
 		
@@ -66,7 +66,7 @@ while($row = $resultado->fetch_assoc())
     $pdf->Cell(30,6,utf8_decode(strtoupper(substr($row['correo'],0,30))),1,0,'C');
     $pdf->Cell(20,6,utf8_decode(strtoupper(substr($row['telefono'],0,30))),1,0,'C');
     $pdf->Cell(49,6,utf8_decode(strtoupper(substr($row['cargo'],0,30))),1,0,'C');
-	$pdf->Cell(12,6,utf8_decode(strtoupper(substr($row['servMilitar'],0,80))),1,1,'C');		
+	$pdf->Cell(12,6,utf8_decode(strtoupper(substr($row['discapacidad'],0,80))),1,1,'C');		
 }
 $pdf->Output();
 ?>

@@ -58,7 +58,7 @@
                 <div class="container text-center cuadro" id="cuadro_tres">
                     <img src="../../img/icon/chart-line.svg" width="60%">
                     <p class="text-center">Reportes de Estadísticos</p>
-                    <a href="informeEstadistico.php" class="btn btn-light boton">Ver Más</a>    
+                    <a href="estadistics/profile.php" class="btn btn-light boton">Ver Más</a>    
                 </div>
             </div>
         </div>

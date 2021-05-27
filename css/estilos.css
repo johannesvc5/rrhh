@@ -125,9 +125,10 @@ body{
 }
 .box_2{
 	width: 100%;
-	background-color: #DF4040;
+	background-color: #0073e6;
 	color: #fff;
-	height: 50px;
+	height: 40px;
+	border-radius: 5px;
 }
 #titles{
 	margin-top: 15px;

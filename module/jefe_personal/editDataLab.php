@@ -2,9 +2,9 @@
 
 include ('../../conexion.php');
 
-$cargo = $_POST['cargo'];
+$cargo = utf8_decode($_POST['cargo']);
 $dependencia = $_POST['dependencia'];
-$condLab = $_POST['condLab'];
+$condLab = utf8_decode($_POST['condLab']);
 $fechaInicio = $_POST['fechaInicio'];
 $id = $_POST['id'];
 

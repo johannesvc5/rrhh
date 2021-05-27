@@ -141,7 +141,7 @@ if ($buscar->num_rows > 0)
                                         <div class="form-group col-md-6">
                                             <label for="Condición Laboral"><strong>Condición Laboral:</strong></label>
                                             <select class="custom-select mr-sm-2 form-select" id="condLab" name="condLab" onchange="myFunction(value);">
-                                                <option value="'.$fila['condLaboral'].'">'.$fila['condLaboral'].'</option>
+                                                <option value="'.$fila['idCondLaboral'].'">'.$fila['condLaboral'].'</option>
                                                 '.$optionII.'
                                             </select>
                                         </div>
