@@ -30,87 +30,157 @@
     
     <div class="container" style="margin-top:10px;">
         <div class="row">
-        <div class="col-lg-12 col-md-12" style="margin-top: 25px; margin-bottom: 20px;">
-                <svg xmlns="http://www.w3.org/2000/svg"width="100%" height="450px" version="1.1" style="padding: 0; margin: 0;"
-                viewBox="0 0 24363.52 16229.66">
-                    <g id="Capa_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"/>
-                        <?php
-                            include ('../../resources/infomapa.php');
-                            include ('../../resources/tooltip.php');
-                            print_r($distritosA);
-                        ?>
-                    </g>
-                </svg>
-            </div>
-            <div class="boxInfo activo" id="boxInfo">
-                <div class="info">
-                    <h3 class="titulo text-center text-uppercase">Región Pasco</h3>
-                    <div class="row">
-                        <p class="total text-primary col-9">Colaboradores:</p>
-                        <p class="total text-primary col-3 text-right">100</p>
-                        <p class="total col-9">Secundaria:</p>
-                        <p class="total col-3 text-right">100</p>
-                        <p class="total col-9">Técnico:</p>
-                        <p class="total col-3 text-right">100</p>
-                        <p class="total col-9">Universitario:</p>
-                        <p class="total col-3 text-right">100</p>
-                        <p class="total col-9">Maestria:</p>
-                        <p class="total col-3 text-right">100</p>
-                        <p class="total col-9">Doctorado:</p>
-                        <p class="total col-3 text-right">100</p>
-                    </div>
-                    <p class="direccion text-right">Fuente: GORE Pasco</p>
+            <div class="col-lg-12 col-md-12" style="margin-top: 25px; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg"width="100%" height="450px" version="1.1" style="padding: 0; margin: 0;"
+                    viewBox="0 0 24363.52 16229.66">
+                        <g id="Capa_x0020_1">
+                            <metadata id="CorelCorpID_0Corel-Layer"/>
+                            <?php
+                                include ('../../resources/infomapa.php');
+                                include ('../../resources/tooltip.php');
+                                include ('../../resources/data.php');
+                                print_r($distritosA);
+                            ?>
+                        </g>
+                    </svg>
                 </div>
-            </div>
-            <?php
-                echo $contendTooltip;
-            ?>
-            
-            <div class="col-12">
-                <div class="row box_2">
-                    <div class="col-1 text-center" style="margin-top:5px;">
-                        <img class="svg" src="../../../img/icon/user-graduate-solid.svg">
-                    </div>
-                    <div class="col-11" style="margin-top:5px;">
-                        <p class="title_2">Gráfico según Grado Académico</p>
-                    </div>
-                    <div class="" style="width: 100%; margin-bottom: 10px;">
-		                <div style="width: 100%; margin-top:10px;">
-		                    <canvas id="chartPROF" width="700" height="150" ></canvas>
-		                </div>
-		            </div>
-                </div>
-            </div>
-            <div class="col-4" style="margin-top:255px;">
-                <div class="row box_2">
-                    <div class="col-2" style="margin-top:5px;">
-                        <img class="svg" src="../../../img/icon/user-tie.svg">
-                    </div>
-                    <div class="col-10" style="margin-top:5px;">
-                        <p class="text-center title_2">Condición Laboral</p>
-                    </div>
-                    <div class="" style="width: 100%; margin-bottom: 10px;">
-		                <div style="width: 100%; margin-top:10px;">
-		                    <canvas id="chartCOND" width="250" height="200" ></canvas>
-		                </div>
-		            </div>
-                </div>
-            </div>
-            <div class="col-4" style="margin-top:255px;">
-                <div class="row box_2">
-                    <div class="col-2" style="margin-top:5px;">
-                        <img class="svg" src="../../../img/icon/user-injured.svg">
-                    </div>
-                    <div class="col-10" style="margin-top:5px;">
-                        <p class="text-center title_2">Discapacidad</p>
+                <div class="boxInfo activo" id="boxInfo">
+                    <div class="info">
+                        <h3 class="titulo text-center text-uppercase">Región Pasco</h3>
+                        <div class="row">
+                            <p class="total col-12 text-center">Colaboradores:</p>
+                            <p class="total3 text-success col-12 text-center"><?php echo $tmpTotal; ?></p>
+                        </div>
+                        <p class="direccion text-right">Fuente: GORE Pasco</p>
                     </div>
                 </div>
-            </div>
-        </div>    
+                <?php
+                    echo $contendTooltip;
+                ?>
+                
+                <div class="col-12">
+                    <div class="row box_2">
+                        <div class="col-1 text-center" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/user-graduate-solid.svg">
+                        </div>
+                        <div class="col-11" style="margin-top:5px;">
+                            <p class="title_2">Gráfico según Grado Académico</p>
+                        </div>
+                        <div class="" style="width: 100%; margin-bottom: 10px;">
+                            <div style="width: 100%; margin-top:10px;">
+                                <canvas id="chartPROF" width="700" height="150" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top:255px;">
+                    <div class="row box_2">
+                        <div class="col-2" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/user-tie.svg">
+                        </div>
+                        <div class="col-10" style="margin-top:5px;">
+                            <p class="text-center title_2">Regimen Laboral</p>
+                        </div>
+                        <div class="" style="width: 100%; margin-bottom: 10px;">
+                            <div style="width: 100%; margin-top:10px;">
+                                <canvas id="chartCOND" width="250" height="200" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top:255px;">
+                    <div class="row box_2">
+                        <div class="col-2" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/user-injured.svg">
+                        </div>
+                        <div class="col-10" style="margin-top:5px;">
+                            <p class="text-center title_2">Discapacidad</p>
+                        </div>
+                        <div class="" style="width: 100%; margin-bottom: 10px;">
+                            <div style="width: 100%; margin-top:10px;">
+                                <canvas id="chartDISC" width="250" height="200" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top:255px;">
+                    <div class="row box_2">
+                        <div class="col-2" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/venus-mars-solid.svg">
+                        </div>
+                        <div class="col-10" style="margin-top:5px;">
+                            <p class="text-center title_2">Sexo</p>
+                        </div>
+                        <div class="" style="width: 100%; margin-bottom: 10px;">
+                            <div style="width: 100%; margin-top:10px;">
+                                <canvas id="chartSEXO" width="250" height="200" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top:300px;">
+                    <div class="row box_2">
+                        <div class="col-2" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/address-card.svg">
+                        </div>
+                        <div class="col-10" style="margin-top:5px;">
+                            <p class="text-center title_2">Servicio Militar</p>
+                        </div>
+                        <div class="" style="width: 100%; margin-bottom: 10px;">
+                            <div style="width: 100%; margin-top:10px;">
+                                <canvas id="chartSM" width="250" height="200" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top:300px;">
+                    <div class="row box_2">
+                        <div class="col-2" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/user-tie.svg">
+                        </div>
+                        <div class="col-10" style="margin-top:5px;">
+                            <p class="text-center title_2">Etapa de Vida</p>
+                        </div>
+                        <div class="" style="width: 100%; margin-bottom: 10px;">
+                            <div style="width: 100%; margin-top:10px;">
+                                <canvas id="chartEV" width="250" height="200" ></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" style="margin-top:300px;">
+                    <div class="row box_2">
+                        <div class="col-2" style="margin-top:5px;">
+                            <img class="svg" src="../../../img/icon/address-book-solid.svg">
+                        </div>
+                        <div class="col-10" style="margin-top:5px;">
+                            <p class="text-center title_2">Vencimiento de Contratos</p>
+                        </div>
+                        <div class="col-12" style="height:60px; background-color:#00aa55; border-radius:10px; margin-top:10px;">
+                            <div class="row" style="margin-top:10px;">
+                                <p class="col-7 text-center" style="text-shadow:1px 1px 1px #000;">Más de 10 días</p>
+                                <h3 class="col-5 text-center" style="font-weight:650; text-shadow:2px 1px 1px #000">100</h3>
+                            </div>
+                        </div>
+                        <div class="col-12" style="height:60px; background-color:#eed000; border-radius:10px; margin-top:10px;">
+                            <div class="row" style="margin-top:10px;">
+                                <p class="col-7 text-center" style="text-shadow:1px 1px 1px #000;">Menos de 10 días y más de 5 días</p>
+                                <h3 class="col-5 text-center" style="font-weight:650; text-shadow:2px 1px 1px #000">100</h3>
+                            </div>
+                        </div>
+                        <div class="col-12" style="height:60px; background-color:#ff4444; border-radius:10px; margin-top:10px;">
+                            <div class="row" style="margin-top:10px;">
+                                <p class="col-7 text-center" style="text-shadow:1px 1px 1px #000;">Menos de 5 días</p>
+                                <h3 class="col-5 text-center" style="font-weight:650; text-shadow:2px 1px 1px #000">100</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>   
     </div>
 
-    <footer class="footer" style="margin-top:500px;">
+    <footer class="footer" style="margin-top:350px;">
         <div class="container text-center">
             <a href="https://www.facebook.com/PascoRegion/" target="_blank">
                 <img src="../../../img/icon/facebook.svg" style="margin-top: 10px;width: 2em;">
@@ -134,21 +204,39 @@
 		var myChart = new Chart(chartCOND, {
 			type: "bar",
 			data: {
-				labels: ["DL.728.","DL. 276","DL. 1057","LOCACIÓN"],
+				labels: [<?php 
+                        for($i=0; $i<count($cadRL); $i++){
+                            if($i<(count($cadRL)-1)){
+                                echo '"'.$cadRL[$i] .'",';
+                            }elseif( $i==(count($cadRL)-1) ){
+                                echo '"'.$cadRL[$i] .'"';
+                            }
+                        }?>],
 					datasets: [{
 					    label: "CONDICIÓN LABORAL",
-					    data: [100, 50, 20, 80 ],
+					    data: [<?php 
+                        for($i=0; $i<count($numRL); $i++){
+                            if($i<(count($numRL)-1)){
+                                echo $numRL[$i] .',';
+                            }elseif( $i==(count($numRL)-1) ){
+                                echo $numRL[$i];
+                            }
+                        }?>],
 					    backgroundColor: [
-					        "rgb(0, 153, 153, 0.9)",
-					        "rgb(250, 110, 51, 0.9)",
-                            "rgb(0, 171, 114, 0.9)",
-					        "rgb(250, 110, 51, 0.9)"
+					        "rgb(50, 147, 220, 0.9)",
+					        "rgb(50, 147, 220, 0.9)",
+                            "rgb(50, 147, 220, 0.9)",
+					        "rgb(50, 147, 220, 0.9)",
+                            "rgb(50, 147, 220, 0.9)",
+					        "rgb(50, 147, 220, 0.9)"
 					    ],
 					    hoverBackgroundColor: [
-					        "rgb(0, 153, 153)",
-					        "rgb(250, 110, 51)",
-                            "rgb(0, 171, 114)",
-					        "rgb(250, 110, 51)"
+					        "rgb(50, 147, 220)",
+					        "rgb(50, 147, 220)",
+                            "rgb(50, 147, 220)",
+					        "rgb(50, 147, 220)",
+                            "rgb(50, 147, 220)",
+					        "rgb(50, 147, 220)"
 					    ]
 					}]
 				},
@@ -260,6 +348,236 @@
 					}
 				}
 			});
+
+            //Gráfico Discapacidad
+            var chartDISC= document.getElementById("chartDISC").getContext("2d");
+
+            var myChart = new Chart(chartDISC, {
+                type: "bar",
+                data: {
+                    labels: ["SI","NO"],
+                        datasets: [{
+                            label: "DISCAPACIDAD",
+                            data: [100, 50],
+                            backgroundColor: [
+                                "rgb(50, 147, 220, 0.9)",
+                                "rgb(250, 110, 51, 0.9)"
+                            ],
+                            hoverBackgroundColor: [
+                                "rgb(50, 147, 220)",
+                                "rgb(250, 110, 51)"
+                            ]
+                        }]
+                    },
+                    options: {
+                        tooltips: {
+                            titleFontSize: 16,
+                            xPadding: 10,
+                            yPadding: 10,
+                            bodyFontSize: 13,
+                            bodySpacing: 10,
+                            mode: "x",
+                        },
+                        legend: {
+                            position: "bottom"
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true,
+                                    maxTicksLimit: 6,
+                                    padding: 10
+                                },
+                                gridLines: {
+                                    drawTicks: true,
+                                    display: true
+                                }
+
+                            }],
+                            xAxes: [{
+                                gridLines: {
+                                    zeroLineColor: "transparent"
+                                },
+                                ticks: {
+                                    padding: 10
+                                }
+                            }]
+                        }
+                    }
+                });
+
+                //Gráfico Servicio Militar
+                var chartSM= document.getElementById("chartSM").getContext("2d");
+
+                var myChart = new Chart(chartSM, {
+                    type: "bar",
+                    data: {
+                        labels: ["SI","NO"],
+                            datasets: [{
+                                label: "SERVICIO MILITAR",
+                                data: [100, 50],
+                                backgroundColor: [
+                                    "rgb(50, 147, 220, 0.9)",
+                                    "rgb(250, 110, 51, 0.9)"
+                                ],
+                                hoverBackgroundColor: [
+                                    "rgb(50, 147, 220)",
+                                    "rgb(250, 110, 51)"
+                                ]
+                            }]
+                        },
+                        options: {
+                            tooltips: {
+                                titleFontSize: 16,
+                                xPadding: 10,
+                                yPadding: 10,
+                                bodyFontSize: 13,
+                                bodySpacing: 10,
+                                mode: "x",
+                            },
+                            legend: {
+                                position: "bottom"
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        maxTicksLimit: 6,
+                                        padding: 10
+                                    },
+                                    gridLines: {
+                                        drawTicks: true,
+                                        display: true
+                                    }
+
+                                }],
+                                xAxes: [{
+                                    gridLines: {
+                                        zeroLineColor: "transparent"
+                                    },
+                                    ticks: {
+                                        padding: 10
+                                    }
+                                }]
+                            }
+                        }
+                    });
+
+                    //Gráfico SeXO
+                    var chartSEXO= document.getElementById("chartSEXO").getContext("2d");
+
+                    var myChart = new Chart(chartSEXO, {
+                        type: "bar",
+                        data: {
+                            labels: ["Masculino","Femenino"],
+                                datasets: [{
+                                    label: "SEXO",
+                                    data: [100, 50],
+                                    backgroundColor: [
+                                        "rgb(50, 147, 220, 0.9)",
+                                        "rgb(250, 110, 51, 0.9)"
+                                    ],
+                                    hoverBackgroundColor: [
+                                        "rgb(50, 147, 220)",
+                                        "rgb(250, 110, 51)"
+                                    ]
+                                }]
+                            },
+                            options: {
+                                tooltips: {
+                                    titleFontSize: 16,
+                                    xPadding: 10,
+                                    yPadding: 10,
+                                    bodyFontSize: 13,
+                                    bodySpacing: 10,
+                                    mode: "x",
+                                },
+                                legend: {
+                                    position: "bottom"
+                                },
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true,
+                                            maxTicksLimit: 6,
+                                            padding: 10
+                                        },
+                                        gridLines: {
+                                            drawTicks: true,
+                                            display: true
+                                        }
+
+                                    }],
+                                    xAxes: [{
+                                        gridLines: {
+                                            zeroLineColor: "transparent"
+                                        },
+                                        ticks: {
+                                            padding: 10
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+                        //Gráfico ETAPA DE VIDA
+                        var chartEV= document.getElementById("chartEV").getContext("2d");
+
+                        var myChart = new Chart(chartEV, {
+                            type: "bar",
+                            data: {
+                                labels: ["Joven","Adulto","Adulto Mayor"],
+                                    datasets: [{
+                                        label: "Etapa de Vida",
+                                        data: [100, 50, 10],
+                                        backgroundColor: [
+                                            "rgb(50, 147, 220, 0.9)",
+                                            "rgb(50, 147, 220, 0.9)",
+                                            "rgb(50, 147, 220, 0.9)"
+                                        ],
+                                        hoverBackgroundColor: [
+                                            "rgb(50, 147, 220)",
+                                            "rgb(50, 147, 220)",
+                                            "rgb(50, 147, 220)"
+                                        ]
+                                    }]
+                                },
+                                options: {
+                                    tooltips: {
+                                        titleFontSize: 16,
+                                        xPadding: 10,
+                                        yPadding: 10,
+                                        bodyFontSize: 13,
+                                        bodySpacing: 10,
+                                        mode: "x",
+                                    },
+                                    legend: {
+                                        position: "bottom"
+                                    },
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true,
+                                                maxTicksLimit: 6,
+                                                padding: 10
+                                            },
+                                            gridLines: {
+                                                drawTicks: true,
+                                                display: true
+                                            }
+
+                                        }],
+                                        xAxes: [{
+                                            gridLines: {
+                                                zeroLineColor: "transparent"
+                                            },
+                                            ticks: {
+                                                padding: 10
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
 	</script>
 
 </body>

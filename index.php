@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap.css" />
 <link rel="stylesheet" href="css/estilos.css" />
+<link rel="icon" type="image/png" href="img/logo.png">
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/main.js"></script>

@@ -178,10 +178,10 @@
                                                 </div>
                                             </div>
                                             <!--Fotografía-->
-                                            <div class="form-group col-md-6" id="img">
+                                            <!--<div class="form-group col-md-6" id="img">
                                                 <input type="file" class="custom-file-input" id="img" aria-describedby="inputGroupFileAddon01">
                                                 <label class="custom-file-label" for="img">Buscar Fotografía</label>
-                                            </div>
+                                            </div> -->
 
                                             <!-- Información Académica -->
                                             <h5 class="modal-title text-center text-primary col-md-12" style="margin-top:5px; margin-bottom: 10px;">Añadir Datos Educativos:</h5>

@@ -1,36 +1,36 @@
 <?php
 
-include('../../conexion.php');
+include('../../../conexion.php');
 
 //Regimen Laboral
 $queryRL="SELECT
-personal.dniPersonal,
-personal.nombreP,
-inflaboral.condLaboral
+personal.idpersonal, 
+inflaboral.idInfLaboral, 
+condlaboral.condLaboral,
+COUNT(*) AS totalCL
 FROM
 personal
-INNER JOIN inflaboral ON inflaboral.idPersonal = personal.idpersonal";
+INNER JOIN
+inflaboral
+ON 
+	personal.idpersonal = inflaboral.idPersonal
+INNER JOIN
+condlaboral
+ON 
+	inflaboral.idCondLaboral = condlaboral.idCondLaboral
+GROUP BY
+	condlaboral.condLaboral";
 
 $resultRL=$db->query($queryRL);
 
-$casRL=0;
-$sieteRL=0;
-$dosRL=0;
+$cadRL=[];
+$numRL=[];
 
 if ($resultRL->num_rows > 0) {
 	while ($rowRL = $resultRL->fetch_assoc()) {
-        if ($rowRL['condLaboral'] == 'CAS - DL. 1057') {
-        	$casRL=$casRL+1;
-        }elseif ($rowRL['condLaboral'] == 'DL. 276') {
-        	$dosRL=$dosRL+1;
-        }elseif ($rowRL['condLaboral'] == 'DL. 728') {
-        	$sieteRL=$sieteRL+1;
-        }
+        $cadRL[]=$rowRL['condLaboral'];
+		$numRL[]=$rowRL['totalCL'];
     }
-}else{
-	$casRL=0;
-	$sieteRL=0;
-	$dosRL=0;
 }
 
 //Nivel Educativo
@@ -102,5 +102,54 @@ if ($resultMIL->num_rows > 0) {
 		$numDISCAP[]=$rowMIL['espMIL'];
 	}
 }
+
+
+//Sexo
+$querySEXO="SELECT
+personal.generoP,
+COUNT(*) AS totalSexo
+FROM
+personal
+GROUP BY
+personal.generoP";
+
+$resultSexo=$db->query($querySEXO);
+$cadSEXO=[];
+$numSEXO=[];
+
+if($resultSexo->num_rows>0){
+	while($rowSEXO=$resultSexo->fetch_assoc()){
+		$cadSEXO[]=$rowSEXO['generoP'];
+		$numSEXO[]=$rowSEXO['totalSexo'];
+	}
+}
+
+//Etapa de vida
+$queryEV="SELECT
+personal.fNacimiento
+FROM
+personal";
+
+$resultEV=$db->query($queryEV);
+$joven=0;
+$adulto=0;
+$aMayor=0;
+
+if($resultEV->num_rows>0){
+	while($rowEV=$resultEV->fetch_assoc()){
+		$fecha_nacimiento = new DateTime($rowEV['fNacimiento']);
+        $hoy = new DateTime();
+        $edad = $hoy->diff($fecha_nacimiento);
+        if($edad->y > 18 AND $edad->y < 27){
+			$joven=$joven+1;
+		}elseif($edad->y > 27 AND $edad->y < 59){
+			$adulto=$adulto+1;
+		}elseif($edad->y > 60){
+			$aMayor=$aMayor+1;
+		}
+	}
+}
+
+//Semaforo
 
 ?>
